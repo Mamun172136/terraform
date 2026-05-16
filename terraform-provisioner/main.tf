@@ -41,3 +41,19 @@ resource "aws_instance" "example"{
     vpc_security_groups_ids=[aws_security_group.example.id]
     associate_public_id_address= true
 }
+
+provisioner "remote-exec"{
+    connection{
+        type = "ssh"
+        user = "ubuntu"
+        private_key= file("~/.ssh/id_rsa")
+        host= self.public_key
+    }
+
+    inline = [
+    "sudo apt update -y",
+    "sudo apt install -y nginx",
+    "sudo systemctl enable nginx",
+    "sudo systemctl start nginx"
+  ]
+}
