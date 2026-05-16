@@ -41,3 +41,9 @@ terraform plan
 command = "echo ${self.public_ip} > /tmp/web_server_ip.txt"
 terraform apply
 ```
+
+### manual tain
+```bash
+terraform taint aws_instance.web_server
+```
+
