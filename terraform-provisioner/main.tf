@@ -57,3 +57,7 @@ provisioner "remote-exec"{
     "sudo systemctl start nginx"
   ]
 }
+
+provisioner "local-exec"{
+    command= "echo ${self.public_key} created > instance_ip.txt
+}
